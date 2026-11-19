@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Existing colours (kept, in case other files use them) -->
     <color name="light_primary">#0C76D6</color>
     <color name="light_secondary">#FF8000</color>
 
     <color name="dark_primary">#00008B</color>
     <color name="dark_secondary">#FF6701</color>
+
+    <color name="hubeats_peach">#FDC99B</color>
+
+    <!-- Light mode -->
+    <color name="hubeats_light_primary">#1774D3</color>
+    <color name="hubeats_light_on_primary">#FFFFFF</color>
+    <color name="hubeats_light_primary_container">#D3E4FB</color>
+    <color name="hubeats_light_on_primary_container">#001C3A</color>
+    <color name="hubeats_light_secondary">#FC7F00</color>
+    <color name="hubeats_light_on_secondary">#1A0A00</color>
+    <color name="hubeats_light_secondary_container">#FDC99B</color>
+    <color name="hubeats_light_on_secondary_container">#3A1E00</color>
+    <color name="hubeats_light_background">#FAFAFD</color>
+    <color name="hubeats_light_on_background">#1A1B20</color>
+    <color name="hubeats_light_surface">#FAFAFD</color>
+    <color name="hubeats_light_on_surface">#1A1B20</color>
+    <color name="hubeats_light_surface_variant">#E3E8F2</color>
+    <color name="hubeats_light_on_surface_variant">#44474F</color>
+    <color name="hubeats_light_outline">#74777F</color>
+
+    <!-- Dark mode -->
+    <color name="hubeats_dark_primary">#FE6601</color>
+    <color name="hubeats_dark_on_primary">#2B1000</color>
+    <color name="hubeats_dark_primary_container">#030083</color>
+    <color name="hubeats_dark_on_primary_container">#FFFFFF</color>
+    <color name="hubeats_dark_secondary">#A9B8FF</color>
+    <color name="hubeats_dark_on_secondary">#0A1458</color>
+    <color name="hubeats_dark_secondary_container">#1A1F6B</color>
+    <color name="hubeats_dark_on_secondary_container">#DDE1FF</color>
+    <color name="hubeats_dark_background">#10101C</color>
+    <color name="hubeats_dark_on_background">#E6E6F0</color>
+    <color name="hubeats_dark_surface">#10101C</color>
+    <color name="hubeats_dark_on_surface">#E6E6F0</color>
+    <color name="hubeats_dark_surface_variant">#2A2A44</color>
+    <color name="hubeats_dark_on_surface_variant">#C7C7DA</color>
+    <color name="hubeats_dark_outline">#8F8FA8</color>
+
+    <!-- Order status chips (same in both modes) -->
+    <color name="status_placed">#1774D3</color>
+    <color name="status_in_progress">#FC7F00</color>
+    <color name="status_ready">#2E7D32</color>
+    <color name="status_picked_up">#6B6B7B</color>
 </resources>
