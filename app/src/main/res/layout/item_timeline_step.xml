@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- One timeline step:
+[dot] Label ........ time  (GAMAR) -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!-- Left column: the dot, a
+    nd a thin line going down to the next dot -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/step_dot"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_timeline_dot" />
+
+        <View
+            android:id="@+id/step_line"
+            android:layout_width="2dp"
+            android:layout_height="28dp"
+            android:background="?attr/colorOutline" />
+    </LinearLayout>
+
+    <!-- Step name, e.g. "Placed".
+    weight 1 pushes the time to the right. -->
+    <TextView
+        android:id="@+id/step_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
+        tools:text="Placed" />
+
+    <!-- When it happened, e.g. "11:05 AM", or "—" if not yet -->
+    <TextView
+        android:id="@+id/step_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        tools:text="11:05 AM" />
+</LinearLayout>
+

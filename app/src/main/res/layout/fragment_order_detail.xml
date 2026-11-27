@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Order details + timeline (GAMAR).
+ScrollView lets it scroll on small phones / landscape. -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+            tools:text="Order #4" />
+
+        <TextView
+            android:id="@+id/text_restaurant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            tools:text="Hardee's" />
+
+        <!-- The items, one per line, e.g. "1x Burger" -->
+        <TextView
+            android:id="@+id/text_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            tools:text="1x Burger\n2x Fries" />
+
+        <TextView
+            android:id="@+id/text_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="end"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            tools:text="Total: 32.05 AED" />
+
+        <!-- A thin horizontal line between the order info and the timeline -->
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp" />
+
+        <!-- The 4 timeline steps: the same layout from 4.4, included 4 times.
+             Each copy gets its own id so the code can tell them apart. -->
+        <include
+            android:id="@+id/step_placed"
+            layout="@layout/item_timeline_step" />
+        <include
+            android:id="@+id/step_in_progress"
+            layout="@layout/item_timeline_step" />
+        <include
+            android:id="@+id/step_ready"
+            layout="@layout/item_timeline_step" />
+        <include
+            android:id="@+id/step_picked_up"
+            layout="@layout/item_timeline_step" />
+
+        <!-- Hidden until the code sees the order is still "Placed" -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_cancel"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/cancel_order"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</ScrollView>
