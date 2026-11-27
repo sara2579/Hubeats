@@ -1,8 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.HubEats" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <item name="colorPrimary">@color/dark_primary</item>
-        <item name="colorSecondary">@color/dark_secondary</item>
+
+
+        <item name="colorPrimary">@color/hubeats_dark_primary</item>
+        <item name="colorOnPrimary">@color/hubeats_dark_on_primary</item>
+        <item name="colorPrimaryContainer">@color/hubeats_dark_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/hubeats_dark_on_primary_container</item>
+
+        <item name="colorSecondary">@color/hubeats_dark_secondary</item>
+        <item name="colorOnSecondary">@color/hubeats_dark_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/hubeats_dark_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/hubeats_dark_on_secondary_container</item>
+
+        <item name="android:colorBackground">@color/hubeats_dark_background</item>
+        <item name="colorOnBackground">@color/hubeats_dark_on_background</item>
+        <item name="colorSurface">@color/hubeats_dark_surface</item>
+        <item name="colorOnSurface">@color/hubeats_dark_on_surface</item>
+        <item name="colorSurfaceVariant">@color/hubeats_dark_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/hubeats_dark_on_surface_variant</item>
+        <item name="colorOutline">@color/hubeats_dark_outline</item>
+
+        <item name="android:statusBarColor">@color/hubeats_dark_primary_container</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
     </style>
 </resources>
