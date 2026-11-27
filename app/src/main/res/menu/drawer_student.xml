@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- items in the student's side drawer(GAMAR) -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Group 1: screens. "single" means only one can be highlighted at a time -->
+    <group
+        android:id="@+id/group_screens"
+        android:checkableBehavior="single">
+        <!-- displayed as radio but this menu will go  inside the
+        NavigationView (the drawer). The drawer draws single differently: no circles,
+        and the selected item gets a coloured highlight behind it instead -->
+
+        <!-- these two ids are the SAME as the screen ids in
+             nav_student.xml. That's how Android knows which screen to open. -->
+        <item
+            android:id="@+id/restaurantListFragment"
+            android:title="@string/menu_restaurants" />
+
+        <item
+            android:id="@+id/myOrdersFragment"
+            android:title="@string/menu_my_orders" />
+    </group>
+
+    <!-- having 2 groups means android automatically draws a line spliting the two groups-->
+
+    <!-- Group 2: actions, not screens -->
+    <group android:id="@+id/group_actions">
+
+        <item
+            android:id="@+id/action_dark_mode"
+            android:title="@string/menu_dark_mode" />
+
+        <item
+            android:id="@+id/action_about"
+            android:title="@string/menu_about" />
+
+        <item
+            android:id="@+id/action_log_out"
+            android:title="@string/menu_log_out" />
+    </group>
+
+    <!-- add android:icon="@drawable/..." to each item when zuni adds icons in her drawable folder -->
 </menu>

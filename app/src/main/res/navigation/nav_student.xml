@@ -1,6 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- student side's navigation map (GAMAR)-->
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_student">
+
+    android:id="@+id/nav_student"
+    app:startDestination="@id/myOrdersFragment">
+    <!-- startDestination = the first screen shown.
+         TEMPORARILY My Orders, coz Zuni's restaurant list doesn't exist yet.
+         When her screens are added, change this to @id/restaurantListFragment. -->
+
+    <!-- ZUNI'S SCREENS : restaurantListFragment, menuFragment, cartFragment -->
+
+    <!-- Screen: Pick your restaurant -->
+    <fragment
+        android:id="@+id/restaurantListFragment"
+        android:name="com.hubeats.app.ui.student.RestaurantListFragment"
+        android:label="@string/menu_restaurants">
+
+        <!-- Arrow: restaurant list → menu -->
+        <action
+            android:id="@+id/action_restaurantList_to_menu"
+            app:destination="@id/menuFragment" />
+    </fragment>
+
+    <!-- Screen: Menu @ restaurant. It must be told WHICH restaurant. -->
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.hubeats.app.ui.student.MenuFragment"
+        android:label="Menu">
+
+        <!-- The two values the restaurant list sends here in a Bundle -->
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
+        <argument
+            android:name="restaurantName"
+            app:argType="string" />
+
+        <!-- Arrow: menu → cart -->
+        <action
+            android:id="@+id/action_menu_to_cart"
+            app:destination="@id/cartFragment" />
+    </fragment>
+
+    <!-- Screen: Cart -->
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.hubeats.app.ui.student.CartFragment"
+        android:label="Cart">
+
+        <!-- Arrow: cart → My Orders, after Place Order.
+             popUpTo removes the menu and cart from the back history,
+             so pressing back from My Orders doesn't reopen a cart already ordered. -->
+        <action
+            android:id="@+id/action_cart_to_myOrders"
+            app:destination="@id/myOrdersFragment"
+            app:popUpTo="@id/restaurantListFragment" />
+    </fragment>
+
+    <!-- GAMAR'S SCREENS -->
+    <!-- Screen: My Orders -->
+    <fragment
+        android:id="@+id/myOrdersFragment"
+        android:name="com.hubeats.app.ui.student.MyOrdersFragment"
+        android:label="@string/title_my_orders">
+        <!-- android:name = the Kotlin class that draws this screen.
+        starts at my orders fragment, it will display this screen
+             android:label = the title shown in the toolbar-->
+
+        <!-- An "action" is an arrow: from this screen to Order details -->
+        <action
+            android:id="@+id/action_myOrders_to_orderDetail"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
+
+    <!-- Screen: Order details + timeline -->
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.hubeats.app.ui.student.OrderDetailFragment"
+        android:label="@string/title_order_detail">
+
+        <!-- This screen needs to know WHICH order to show,
+             so My Orders gives it a number called orderId. -->
+        <argument
+            android:name="orderId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

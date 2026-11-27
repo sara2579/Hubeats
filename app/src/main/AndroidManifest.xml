@@ -22,5 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- GAMAR: student frame. exported="true" ONLY so we can launch it
+     directly while testing. Change to "false" before the final submission. -->
+        <activity
+            android:name=".ui.student.StudentActivity"
+            android:exported="true" />
+
     </application>
 </manifest>
