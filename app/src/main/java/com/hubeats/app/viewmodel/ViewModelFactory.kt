@@ -19,7 +19,9 @@ class ViewModelFactory(context: Context) : ViewModelProvider.Factory {
         // SALAM: add LoginViewModel and ManageMenuViewModel here
         // AMIRA: add EmployeeOrdersViewModel here
         // GAMAR: add StudentOrdersViewModel here
-        // ZUNAIRAH: CartViewModel will be added here
+        modelClass.isAssignableFrom(CartViewModel::class.java) ->
+            CartViewModel(repository) as T
+
         else -> throw IllegalArgumentException("Unknown ViewModel: ${modelClass.name}")
     }
 }
