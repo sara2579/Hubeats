@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- The student frame (GAMAR): drawer + toolbar + the space for screens -->
+
+<!-- DrawerLayout = a layout whose last child can slide in from the side -->
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- CHILD 1: the main content (toolbar on top, screen underneath).
+         fitsSystemWindows keeps it from hiding under the phone's clock bar. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <!-- The bar at the top with the ☰ button and the screen title -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <!-- The "space" where screens appear. NavHostFragment reads
+             nav_student.xml and puts the right screen here. -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_student" />
+        <!-- height 0dp + weight 1 = "take all the space left under the toolbar".
+             defaultNavHost = the phone's back button goes back between screens. -->
+    </LinearLayout>
+
+    <!-- CHILD 2: the drawer itself.
+    layout_gravity="start" means slides in from the left.
+         app:menu = the  menu items -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_student" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

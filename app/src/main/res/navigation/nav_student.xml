@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- student side's navigation map (GAMAR).
-Zuni adds her 3 screens here too. -->
+<!-- student side's navigation map (GAMAR)-->
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,8 +11,56 @@ Zuni adds her 3 screens here too. -->
          TEMPORARILY My Orders, coz Zuni's restaurant list doesn't exist yet.
          When her screens are added, change this to @id/restaurantListFragment. -->
 
-    <!-- ZUNI'S SCREENS GO HERE: restaurantListFragment, menuFragment, cartFragment -->
+    <!-- ZUNI'S SCREENS : restaurantListFragment, menuFragment, cartFragment -->
 
+    <!-- Screen: Pick your restaurant -->
+    <fragment
+        android:id="@+id/restaurantListFragment"
+        android:name="com.hubeats.app.ui.student.RestaurantListFragment"
+        android:label="@string/menu_restaurants">
+
+        <!-- Arrow: restaurant list → menu -->
+        <action
+            android:id="@+id/action_restaurantList_to_menu"
+            app:destination="@id/menuFragment" />
+    </fragment>
+
+    <!-- Screen: Menu @ restaurant. It must be told WHICH restaurant. -->
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.hubeats.app.ui.student.MenuFragment"
+        android:label="Menu">
+
+        <!-- The two values the restaurant list sends here in a Bundle -->
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
+        <argument
+            android:name="restaurantName"
+            app:argType="string" />
+
+        <!-- Arrow: menu → cart -->
+        <action
+            android:id="@+id/action_menu_to_cart"
+            app:destination="@id/cartFragment" />
+    </fragment>
+
+    <!-- Screen: Cart -->
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.hubeats.app.ui.student.CartFragment"
+        android:label="Cart">
+
+        <!-- Arrow: cart → My Orders, after Place Order.
+             popUpTo removes the menu and cart from the back history,
+             so pressing back from My Orders doesn't reopen a cart already ordered. -->
+        <action
+            android:id="@+id/action_cart_to_myOrders"
+            app:destination="@id/myOrdersFragment"
+            app:popUpTo="@id/restaurantListFragment" />
+    </fragment>
+
+    <!-- GAMAR'S SCREENS -->
     <!-- Screen: My Orders -->
     <fragment
         android:id="@+id/myOrdersFragment"
