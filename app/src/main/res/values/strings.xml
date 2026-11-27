@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">HubEats</string>
+
+    <!-- ===== GAMAR: student drawer, My Orders, Order Detail ===== -->
+
+    <!-- Drawer menu items -->
+    <string name="menu_restaurants">Restaurants</string>
+    <string name="menu_my_orders">My Orders</string>
+    <string name="menu_dark_mode">Dark mode</string>
+    <string name="menu_about">About</string>
+    <string name="menu_log_out">Log out</string>
+
+    <!-- Screen titles shown in the toolbar -->
+    <string name="title_my_orders">My Orders</string>
+    <string name="title_order_detail">Order details</string>
+
+    <!-- My Orders -->
+    <string name="my_orders_empty">No orders yet. Pick a restaurant to order your lunch.</string>
+
+    <!-- %d = a placeholder gap where the code puts the order number -->
+    <string name="order_number">Order #%d</string>
+    <!-- %.2f = a placeholder gap for a number with 2 decimals, e.g. 32.05 -->
+    <string name="order_total">Total: %.2f AED</string>
+
+    <!-- Timeline step names (what the student sees) -->
+    <string name="step_placed">Placed</string>
+    <string name="step_in_progress">In Progress</string>
+    <string name="step_ready">Ready</string>
+    <string name="step_picked_up">Picked Up</string>
+    <string name="step_not_yet">—</string>
+
+    <!-- Cancel order -->
+    <string name="cancel_order">Cancel order</string>
+    <string name="cancel_order_question">Are you sure you want to cancel this order?</string>
+    <string name="yes_cancel">Yes, cancel</string>
+    <string name="keep_order">No, keep order</string>
+    <string name="order_cancelled">Order cancelled</string>
+
+    <!-- ===== END GAMAR ===== -->
+
 </resources>
