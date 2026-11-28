@@ -2,13 +2,11 @@ package com.hubeats.app.ui.student
 
 // Android basics (built into every phone)
 import android.content.Intent                 // a "message" to open another screen (used in logOut)
-import android.content.res.Configuration      // phone settings: is dark mode on? (used in toggleDarkMode)
 import android.os.Bundle                      // saved data passed into onCreate
 import android.widget.Toast                   // small pop-up message (used in openAbout; delete in Stage 6)
 
 // AppCompat (makes newer features work on older phones)
 import androidx.appcompat.app.AppCompatActivity  // the base class every activity builds on
-import androidx.appcompat.app.AppCompatDelegate  // switches light/dark mode for the whole app
 
 // Drawer
 import androidx.drawerlayout.widget.DrawerLayout // the layout that lets the drawer slide in
@@ -30,6 +28,14 @@ import com.google.android.material.navigation.NavigationView      // the panel i
 // Our own project
 import com.hubeats.app.R                      // auto-generated list of every id, layout and string in res
 import com.hubeats.app.ui.auth.LoginActivity  // login screen (opened on log out)
+import com.hubeats.app.util.ThemeHelper       // Zuni's: saves and applies the dark mode choice
+
+//temporarily for the temporray psarts added os login works while salam finishes her login
+import androidx.lifecycle.lifecycleScope
+import com.hubeats.app.data.database.AppDatabase
+import com.hubeats.app.data.repository.HubEatsRepository
+import com.hubeats.app.util.SessionManager
+import kotlinx.coroutines.launch
 
 // The frame around all student screens: toolbar + drawer + navigation. (GAMAR)
 class StudentActivity : AppCompatActivity() {
@@ -41,6 +47,9 @@ class StudentActivity : AppCompatActivity() {
 
     // onCreate runs once when the screen opens
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Apply the light/dark choice saved last time (Zuni's ThemeHelper),
+        // BEFORE the screen is drawn, so it opens in the right colours
+        ThemeHelper.applySavedTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student)   // show the layout
 
@@ -73,7 +82,7 @@ class StudentActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //setupActionBar line -"Toolbar, follow the controller. Every time the screen changes, show its name, and show ☰ or ← using the rule from step 4."
-       // navView line -"Drawer, follow the controller too. Every time the screen changes, highlight the matching item.
+        // navView line -"Drawer, follow the controller too. Every time the screen changes, highlight the matching item.
 
 
         // 6. Decide what happens when a drawer item is tapped
@@ -82,7 +91,11 @@ class StudentActivity : AppCompatActivity() {
                 R.id.action_dark_mode -> toggleDarkMode() //all methods below
                 R.id.action_about -> openAbout()
                 R.id.action_log_out -> logOut()
-                // Anything else is a screen (Restaurants / My Orders): let navigation open it
+                // Restaurants = the first screen. Go back to it, removing the screens on top of it.
+                // (false = keep the restaurant list itself.) We do this ourselves because the
+                // automatic version can bring My Orders straight back after an order is placed.
+                R.id.restaurantListFragment -> navController.popBackStack(R.id.restaurantListFragment, false)
+                // Anything else is a screen (My Orders): let navigation open it
                 else -> NavigationUI.onNavDestinationSelected(item, navController)
             }
             drawerLayout.closeDrawers()   // slide the drawer shut
@@ -90,6 +103,19 @@ class StudentActivity : AppCompatActivity() {
             //a block like { item -> ... } expects a boolean answer from the last line.
             // There's no return word here. so we keep our last line as true as in we handled the tap
             // so that  answer is sent back to Android.
+        }
+
+
+        // TEMPORARY (until Salam's login works): fill the database with sample data
+        // and pretend "student1" is logged in. DELETE this block when login is done.
+        lifecycleScope.launch {   // runs in the background (coroutine), so the screen doesn't freeze
+            val repository = HubEatsRepository(AppDatabase.getDatabase(applicationContext))
+            repository.addSampleDataIfEmpty()                 // adds restaurants, menus, accounts (only the first time)
+            val user = repository.login("student1", "1234")   // find the test student
+            if (user != null) {
+                SessionManager(this@StudentActivity)
+                    .saveUser(user.id, user.fullName, user.role, user.restaurantId)  // save as "logged in"
+            }
         }
 
     }
@@ -107,17 +133,9 @@ class StudentActivity : AppCompatActivity() {
 
     // Switches between light and dark mode
     private fun toggleDarkMode() {
-        // Check whether the app is dark right now
-        val nightBits = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val isDarkNow = nightBits == Configuration.UI_MODE_NIGHT_YES
-
-        // Flip it. Android redraws the screen in the new colours.
-        if (isDarkNow) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-        // TODO (Stage 6): use Zuni's ThemeHelper instead, so the choice is saved
+        // Zuni's ThemeHelper does it all: flips the choice, SAVES it (so it's remembered
+        // next time the app opens), and applies it. Android then redraws the screen in the new colours.
+        ThemeHelper.toggle(this)
     }
 
     // Opens the About screen

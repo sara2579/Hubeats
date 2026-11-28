@@ -42,7 +42,7 @@
     <string name="pick_restaurant">Pick your restaurant</string>
     <string name="search_restaurants">Search restaurants</string>
     <string name="no_restaurants_found">No restaurants found</string>
-    <string name="menu_at">Menu @ %1$s</string>
+    <string name="menu_at">%1$s Menu</string>
     <string name="cart_button">Cart (%1$d)</string>
     <string name="no_menu_items">No items on this menu yet</string>
     <string name="price_aed">AED %1$.2f</string>

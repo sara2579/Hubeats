@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- A filled circle used for the timeline dots (GAMAR).
- Colour is set in code. -->
-
+<!-- A filled circle for the timeline dots (GAMAR).
+     ?attr/colorPrimary = the theme's main colour, so it's right in light AND dark mode. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
-    <solid android:color="@android:color/white" />
+    <solid android:color="?attr/colorPrimary" />
 </shape>
