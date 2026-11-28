@@ -31,6 +31,9 @@ import com.google.android.material.navigation.NavigationView      // the panel i
 import com.hubeats.app.R                      // auto-generated list of every id, layout and string in res
 import com.hubeats.app.ui.auth.LoginActivity  // login screen (opened on log out)
 
+import com.hubeats.app.util.SessionManager
+import com.hubeats.app.ui.about.AboutActivity
+
 // The frame around all student screens: toolbar + drawer + navigation. (GAMAR)
 class StudentActivity : AppCompatActivity() {
 
@@ -122,14 +125,12 @@ class StudentActivity : AppCompatActivity() {
 
     // Opens the About screen
     private fun openAbout() {
-        // TODO (Stage 6): when Salam's AboutActivity exists, replace the Toast with:
-        // startActivity(Intent(this, AboutActivity::class.java))
-        Toast.makeText(this, "About screen coming soon", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, AboutActivity::class.java))
     }
 
     // Goes back to the login screen
     private fun logOut() {
-        // TODO (Stage 6): first clear the saved user with Salam's SessionManager
+        SessionManager(this).logout()
 
         val intent = Intent(this, LoginActivity::class.java)
         // These flags wipe the screen history, so "back" can't return to the student screens

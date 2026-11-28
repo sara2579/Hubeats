@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">HubEats</string>
+    <string name="price_aed">AED %.2f</string>
 
     <!-- ===== GAMAR: student drawer, My Orders, Order Detail ===== -->
 

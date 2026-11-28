@@ -29,5 +29,13 @@
             android:name=".ui.student.StudentActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".ui.employee.EmployeeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:exported="false" />
+
     </application>
 </manifest>
