@@ -1,6 +1,23 @@
 <resources>
     <string name="app_name">HubEats</string>
-    <string name="price_aed">AED %.2f</string>
+
+    <string name="pick_restaurant">Pick your restaurant</string>
+    <string name="search_restaurants">Search restaurants</string>
+    <string name="no_restaurants_found">No restaurants found</string>
+    <string name="menu_at">Menu @ %1$s</string>
+    <string name="cart_button">Cart (%1$d)</string>
+    <string name="no_menu_items">No items on this menu yet</string>
+    <string name="price_aed">AED %1$.2f</string>
+    <string name="add_one">Add one</string>
+    <string name="remove_one">Remove one</string>
+    <string name="your_cart">Your cart</string>
+    <string name="cart_empty">Your cart is empty</string>
+    <string name="cart_total">Total: AED %1$.2f</string>
+    <string name="place_order">Place Order</string>
+    <string name="order_placed_title">Order placed!</string>
+    <string name="order_placed_message">Order No. #%1$d</string>
+    <string name="login_again">Please log in again</string>
+
 
     <!-- ===== GAMAR: student drawer, My Orders, Order Detail ===== -->
 
