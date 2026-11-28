@@ -6,10 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/nav_student"
-    app:startDestination="@id/myOrdersFragment">
-    <!-- startDestination = the first screen shown.
-         TEMPORARILY My Orders, coz Zuni's restaurant list doesn't exist yet.
-         When her screens are added, change this to @id/restaurantListFragment. -->
+    app:startDestination="@id/restaurantListFragment">
+    <!-- startDestination = the first screen shown -->
 
     <!-- ZUNI'S SCREENS : restaurantListFragment, menuFragment, cartFragment -->
 
